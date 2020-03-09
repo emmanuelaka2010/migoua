@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.indexLayout')
 
 @section('content')
 	<!-- Content Box -->
@@ -9,8 +9,8 @@
 				<div class="row">
 					<div class="breadcrumb-web">
 						<ul class="clear-margin">
-							<li class="animate-default title-hover-red"><a href="#">Home</a></li>
-							<li class="animate-default title-hover-red"><a href="#">All Products</a></li>
+						<li class="animate-default title-hover-red"><a href="{{ route('index') }}">Acceuil</a></li>
+							<li class="animate-default title-hover-red"><a href="#">Tous les produits</a></li>
 						</ul>
 					</div>
 				</div>
@@ -37,7 +37,7 @@
 								<p class="title-category-page clear-margin">{{ $name }}</p>
 								</div>
 								<div class="col-md-5 col-sm-5 col-xs-8 right-category-bar float-right relative">
-									<p class=" float-left">Showing 1–20 of 75 results</p>
+									<p class=" float-left">Showing 1–20 of {{ $products->count() }} résultats</p>
 									<a href="#" class=" float-left active-view-bar"><span class="icon-bar-category border ti-layout-grid3"></span></a>
 									<a href="#" class=" float-left"><span class="icon-bar-category border ti-layout-list-thumb"></span></a>
 								</div>
@@ -55,7 +55,7 @@
 									<ul class="option-product animate-default">
 										<li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
 										<li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
-										<li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
+									<li class="relative"><a href="javascript:;" class="show-modal" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-photo="{{ $product->photo }}" data-prix="{{ $product->prix }}" data-toggle="modal" data-target="#quickview"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
 									</ul>
 								</div>
 							<h3 class="title-product clearfix full-width title-hover-black"><a href="{{ route('product', ['cat' => $name, 'num' => $product->id,'prod' => str_replace(" ", "-", $product->name)]) }}">{{ $product->name }}</a></h3>
@@ -89,6 +89,9 @@
 			</div>
 		</div>
 		<!-- End Sider Bar -->
+		<!-- Content Modal -->
+		@include('layouts.partials._quickview')
+		<!-- End Content Modal -->
 		<!-- Support -->
 		<div class=" support-box full-width bg-red support_box_v2">
 			<div class="container-web">

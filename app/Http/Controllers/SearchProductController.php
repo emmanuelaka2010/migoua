@@ -12,15 +12,12 @@ class SearchProductController extends Controller
     public function search(Request $request) {
 
         $categories = Categories::all();
-        // dd($_GET['cate_search']);
         $search = $request->input('s');
+        // dd('$search');
         $category_name = $_GET['cate_search'];
-        // dd($search);
-        
-        // dd($products);
 
         if (isset($category_name) and isset($search)) {
-            if ($category_name == 'Toutes les catégories') {
+            if ($category_name == 'all') {
                 $products = Product::where('name','like', "%$search%")->get();
             }
             else {

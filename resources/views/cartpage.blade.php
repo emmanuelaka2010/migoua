@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Cart Page</title>
+	<title>
+        @if (isset($title))
+            {{ $title }} | Migouabo
+        @else
+            Migouabo
+        @endif
+    </title>
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -108,19 +114,9 @@
 	<!-- Menu Mobile -->
 	<div class="menu-mobile-left-content menu-bg-white">
 		<ul>
-			<li><a href="#"><img src="img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
-			<li><a href="#"><img src="img/icon_food_gray.png" alt="Icon Food" /> <p>Food</p></a></li>
-			<li><a href="#"><img src="img/icon_mobile_gray.png" alt="Icon Mobile & Tablet" /> <p>Mobile & Tablet</p></a></li>
-			<li><a href="#"><img src="img/icon_electric_gray.png" alt="Icon Electric Appliances" /> <p>Electric Appliances</p></a></li>
-			<li><a href="#"><img src="img/icon_computer_gray.png" alt="Icon Electronics & Technology" /> <p>Electronics & Technology</p></a></li>
-			<li><a href="#"><img src="img/icon_fashion_gray.png" alt="Icon Fashion" /> <p>Fashion</p></a></li>
-			<li><a href="#"><img src="img/icon_health_gray.png" alt="Icon Health & Beauty" /> <p>Health & Beauty</p></a></li>
-			<li><a href="#"><img src="img/icon_mother_gray.png" alt="Icon Mother & Baby" /> <p>Mother & Baby</p></a></li>
-			<li><a href="#"><img src="img/icon_book_gray.png" alt="Icon Books & Stationery" /> <p>Books & Stationery</p></a></li>
-			<li><a href="#"><img src="img/icon_home_gray.png" alt="Icon Home & Life" /> <p>Home & Life</p></a></li>
-			<li><a href="#"><img src="img/icon_sport_gray.png" alt="Icon Sports & Outdoors" /> <p>Sports & Outdoors</p></a></li>
-			<li><a href="#"><img src="img/icon_auto_gray.png" alt="Icon Auto & Moto" /> <p>Auto & Moto</p></a></li>
-			<li><a href="#"><img src="img/icon_voucher_gray.png" alt="Icon Voucher Service" /> <p>Voucher Service</p></a></li>
+            @foreach ($categories as $category)
+                <li><a href="{{ route('category', ['name'=> $category->name]) }}"><img src="img/{{ $category->photo }}" alt="Icon {{ $category->name }}" /> <p>{{ $category->name }}</p></a></li>
+            @endforeach
 		</ul>
 	</div>
 	<!-- Header Box -->
@@ -166,26 +162,17 @@
                                 <a href="#"><img alt="Logo" src="img/logo.png" /></a>
                             </div>
                             <div class="clearfix search-box relative float-left">
-                                <form method="GET" action="/" class="">
+                                <form method="GET" action="{{ route('search') }}" class="">
                                     <div class="clearfix category-box relative">
                                         <select name="cate_search">
-                                            <option>All Category</option>
-                                            <option>Food</option>
-                                            <option>Mobile & Tablet</option>
-                                            <option>Electric Appliances</option>
-                                            <option>Electronics & Technology</option>
-                                            <option>Fashion</option>
-                                            <option>Health & Beauty</option>
-                                            <option>Mother & Baby</option>
-                                            <option>Books & Stationery</option>
-                                            <option>Home & Life</option>
-                                            <option>Sports & Outdoors</option>
-                                            <option>Auto & Moto</option>
-                                            <option>Voucher Service</option>
+                                            <option value="all">Toutes les catégories</option>
+                                            @foreach ($categories as $category)
+                                                <option>{{ $category->name }}</option>
+                                            @endforeach
                                         </select>
                                     </div>
-                                    <input type="text" name="s" placeholder="Enter keyword here . . .">
-                                    <button type="submit" class="animate-default button-hover-red">Search</button>
+                                    <input type="text" name="s" placeholder="Entrer un mot . . .">
+                                    <button type="submit" class="animate-default button-hover-red">Rechercher</button>
                                 </form>
                             </div>
                             <div class="clearfix icon-search-mobile absolute">
@@ -213,13 +200,14 @@
                                         </div>
                                     </div>
                                     @endforeach
+                                </div>
                                 <div class="relative border no-border-l no-border-r total-cart-header">
-                                    <p class="bold clear-margin">Subtotal:</p>
+                                    <p class="bold clear-margin">Sous-total:</p>
                                     <p class=" clear-margin bold">{{ Cart::total() }} F CFA</p>
                                 </div>
                                 <div class="relative btn-cart-header">
-                                <a href="{{ route('cart') }}" class="uppercase bold animate-default">view cart</a>
-                                <a href="{{ route('checkout') }}" class="uppercase bold button-hover-red animate-default">checkout</a>
+                                <a href="{{ route('cart') }}" class="uppercase bold animate-default">Votre panier</a>
+                                <a href="{{ route('checkout') }}" class="uppercase bold button-hover-red animate-default">Commander</a>
                                 </div>
                             </div>
                             <div class="mask-search absolute clearfix" onclick="hiddenBoxSearchMobile()"></div>
@@ -229,7 +217,7 @@
                     </div>
                     <div class="row">
                         <a class="menu-vertical hidden-md hidden-lg" onclick="showMenuMobie()">
-							<span class="animate-default"><i class="fa fa-list" aria-hidden="true"></i> all categories</span>
+							<span class="animate-default"><i class="fa fa-list" aria-hidden="true"></i> Toutes les catégories</span>
 						</a>
                     </div>
                 </div>
@@ -240,7 +228,7 @@
                         <!-- Menu Page -->
                         <div class="menu-header full-width">
                             <ul class="clear-margin">
-                                <li onclick="showMenuHomeV3()"><a class="animate-default" href="#"><i class="fa fa-list" aria-hidden="true"></i> all categories</a></li>
+                                <li onclick="showMenuHomeV3()"><a class="animate-default" href="#"><i class="fa fa-list" aria-hidden="true"></i> Toutes les catégories</a></li>
                                 <li class="title-hover-red">
                                     <a class="animate-default" href="#">home</a>
                                     <ul class="sub-menu mega-menu">
@@ -312,19 +300,9 @@
             </div>
             <div class="clearfix menu_more_header menu-web menu-bg-white">
                 <ul>
-                    <li><a href="#"><img src="img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
-                    <li><a href="#"><img src="img/icon_food_gray.png" alt="Icon Food" /> <p>Food</p></a></li>
-                    <li><a href="#"><img src="img/icon_mobile_gray.png" alt="Icon Mobile & Tablet" /> <p>Mobile & Tablet</p></a></li>
-                    <li><a href="#"><img src="img/icon_electric_gray.png" alt="Icon Electric Appliances" /> <p>Electric Appliances</p></a></li>
-                    <li><a href="#"><img src="img/icon_computer_gray.png" alt="Icon Electronics & Technology" /> <p>Electronics & Technology</p></a></li>
-                    <li><a href="#"><img src="img/icon_fashion_gray.png" alt="Icon Fashion" /> <p>Fashion</p></a></li>
-                    <li><a href="#"><img src="img/icon_health_gray.png" alt="Icon Health & Beauty" /> <p>Health & Beauty</p></a></li>
-                    <li><a href="#"><img src="img/icon_mother_gray.png" alt="Icon Mother & Baby" /> <p>Mother & Baby</p></a></li>
-                    <li><a href="#"><img src="img/icon_book_gray.png" alt="Icon Books & Stationery" /> <p>Books & Stationery</p></a></li>
-                    <li><a href="#"><img src="img/icon_home_gray.png" alt="Icon Home & Life" /> <p>Home & Life</p></a></li>
-                    <li><a href="#"><img src="img/icon_sport_gray.png" alt="Icon Sports & Outdoors" /> <p>Sports & Outdoors</p></a></li>
-                    <li><a href="#"><img src="img/icon_auto_gray.png" alt="Icon Auto & Moto" /> <p>Auto & Moto</p></a></li>
-                    <li><a href="#"><img src="img/icon_voucher_gray.png" alt="Icon Voucher Service" /> <p>Voucher Service</p></a></li>
+                    @foreach ($categories as $category)
+                    <li><a href="{{ route('category', ['name'=> $category->name]) }}"><img src="img/{{ $category->photo }}" alt="Icon {{ $category->name }}" /> <p>{{ $category->name }}</p></a></li>
+                    @endforeach
                 </ul>
             </div>
             <div class="header-ontop">
@@ -417,8 +395,8 @@
 				<div class="row">
 					<div class="breadcrumb-web">
 						<ul class="clear-margin">
-							<li class="animate-default title-hover-red"><a href="#">Home</a></li>
-							<li class="animate-default title-hover-red"><a href="#">Shoping Cart</a></li>
+                        <li class="animate-default title-hover-red"><a href="{{ route('index') }}">Accueil</a></li>
+                        <li class="animate-default title-hover-red"><a href="{{ route('cart') }}">Panier</a></li>
 						</ul>
 					</div>
 				</div>

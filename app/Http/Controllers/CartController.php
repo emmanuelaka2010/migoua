@@ -2,27 +2,32 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
-use Illuminate\Http\Request;
 use Cart;
+use App\Product;
+use App\Categories;
+use Illuminate\Http\Request;
+// use response;
 
 class CartController extends Controller
 {
     public function add_to_cart()
     {
-        $product = Product::find(request()->product_id);
+        $id = request()->product_id;
+        $qty = request()->num;
+        $product = Product::find($id);
 
-        $cart = Cart::add($product->id, $product->name, request()->num, $product->prix)
+        $cart = Cart::add($product->id, $product->name, $qty, $product->prix)
                     ->associate($product);
         // dd($cart);
         return redirect()->route('cart');
+        // return response()->json($cart);
         
     }
 
     public function cart()
     {
-        // Cart::destroy();
-        return view('cartpage');
+        $categories = Categories::all();
+        return view('cartpage', compact('categories'));
     }
 
     public function cart_delete($id)

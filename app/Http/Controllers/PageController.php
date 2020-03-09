@@ -18,6 +18,7 @@ class PageController extends Controller
     }
 
     public function category() {
+        $title = 'Categories';
         $name = $_GET['name'];
         $categories = Categories::all();
         $products = DB::table('categories')
@@ -26,14 +27,17 @@ class PageController extends Controller
                 ->where('categories.name', $name)
                 ->get();
         // echo $name;
-        return view('category', compact('name', 'products', 'categories'));
+        return view('category', compact('name', 'products', 'categories', 'title'));
     }
 
     public function product() {
+        $title = 'Produit';
         $id = $_GET['num'];
         $categories = Categories::all();
         $product = Product::where('id', $id)->get();
+        // dd($product);
         $product = $product[0];
-        return view('product', compact('product', 'categories'));
+        // dd($product->status);
+        return view('product', compact('product', 'categories', 'title'));
     }
 }

@@ -1,4 +1,4 @@
-@extends('layouts.default')
+@extends('layouts.indexLayout')
 @section('content')
 	<!-- Content Box -->
 	<div class="relative full-width">
@@ -8,8 +8,8 @@
 				<div class="row">
 					<div class="breadcrumb-web">
 						<ul class="clear-margin">
-							<li class="animate-default title-hover-red"><a href="#">Home</a></li>
-							<li class="animate-default title-hover-red"><a href="#">Search</a></li>
+						<li class="animate-default title-hover-red"><a href="{{ route('index') }}">Accueil</a></li>
+							<li class="animate-default title-hover-red"><a href="#">Recherche</a></li>
 						</ul>
 					</div>
 				</div>
@@ -32,7 +32,7 @@
 										<p class="title-category-page clear-margin">Résultats de recherche pour '{{ request()->input('s') }}'</p>
 									</div>
 									<div class="col-md-5 col-sm-5 col-xs-8 right-category-bar float-right relative">
-										<p class=" float-left">Showing 1–20 of 75 results</p>
+										<p class=" float-left">Showing 1–20 of {{ $products->count() }} résultats</p>
 										<a href="#" class=" float-left active-view-bar"><span class="icon-bar-category border ti-layout-grid3"></span></a>
 										<a href="#" class=" float-left"><span class="icon-bar-category border ti-layout-list-thumb"></span></a>
 									</div>
@@ -52,7 +52,7 @@
 									</ul>
 								</div>
 							<h3 class="title-product clearfix full-width title-hover-black"><a href="{{ route('product', ['name' => str_replace(" ", "-", $product->name), 'num' => $product->id]) }}">{{ $product->name }}</a></h3>
-								<p class="clearfix price-product"><span class="price-old">$700</span> $350</p>
+							<p class="clearfix price-product"><span class="price-old">$700</span> {{ $product->prix }} F CFA</p>
 								<div class="clearfix ranking-product-category ranking-color">
 									<i class="fa fa-star" aria-hidden="true"></i>
 									<i class="fa fa-star" aria-hidden="true"></i>

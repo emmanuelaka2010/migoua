@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>{{ $title }}</title>
+	<title>
+        @if (isset($title))
+            {{ $title }} | Migouabo
+        @else
+            Migouabo
+        @endif
+    </title>
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />

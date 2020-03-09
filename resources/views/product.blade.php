@@ -1,7 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>Product V1</title>
+	<title>
+		@if (isset($title))
+			{{ $title }} | Migouabo
+		@else
+			Migouabo
+		@endif
+	</title>
 	<meta name="format-detection" content="telephone=no">
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -112,22 +118,8 @@
 	<div class="menu-mobile-left-content menu-bg-white">
 		<ul>
 			@foreach ($categories as $category)
-                {{-- <li><a href="{{ route('category', ['name' => $category->name]) }}">{{ $category->name }}</a></li> --}}
                 <li><a href="{{ route('category', ['name' => $category->name]) }}"><img src="img/{{ $category->photo }}" alt="Icon {{ $category->name }}" /> <p>{{ $category->name }}</p></a></li>
 			@endforeach
-			{{-- <li><a href="#"><img src="img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
-			<li><a href="#"><img src="img/icon_food_gray.png" alt="Icon Food" /> <p>Foodbbbbbbbbb</p></a></li>
-			<li><a href="#"><img src="img/icon_mobile_gray.png" alt="Icon Mobile & Tablet" /> <p>Mobile & Tablet</p></a></li>
-			<li><a href="#"><img src="img/icon_electric_gray.png" alt="Icon Electric Appliances" /> <p>Electric Appliances</p></a></li>
-			<li><a href="#"><img src="img/icon_computer_gray.png" alt="Icon Electronics & Technology"/> <p>Electronics & Technology</p></a></li>
-			<li><a href="#"><img src="img/icon_fashion_gray.png" alt="Icon Fashion" /> <p>Fashion</p></a></li>
-			<li><a href="#"><img src="img/icon_health_gray.png" alt="Icon Health & Beauty" /> <p>Health & Beauty</p></a></li>
-			<li><a href="#"><img src="img/icon_mother_gray.png" alt="Icon Mother & Baby" /> <p>Mother & Baby</p></a></li>
-			<li><a href="#"><img src="img/icon_book_gray.png" alt="Icon Books & Stationery" /> <p>Books & Stationery</p></a></li>
-			<li><a href="#"><img src="img/icon_home_gray.png" alt="Icon Home & Life" /> <p>Home & Life</p></a></li>
-			<li><a href="#"><img src="img/icon_sport_gray.png" alt="Icon Sports & Outdoors" /> <p>Sports & Outdoors</p></a></li>
-			<li><a href="#"><img src="img/icon_auto_gray.png" alt="Icon Auto & Moto" /> <p>Auto & Moto</p></a></li>
-			<li><a href="#"><img src="img/icon_voucher_gray.png" alt="Icon Voucher Service" /> <p>Voucher Service</p></a></li> --}}
 		</ul>
 	</div>
 	<!-- Header Box -->
@@ -174,26 +166,17 @@
                                 <a href="#"><img alt="Logo" src="img/logo.png" /></a>
                             </div>
                             <div class="clearfix search-box relative float-left">
-                                <form method="GET" action="/" class="">
+							<form method="GET" action="{{ route('search') }}" class="">
                                     <div class="clearfix category-box relative">
                                         <select name="cate_search">
-                                            <option>All Category</option>
-                                            <option>Foodaa</option>
-                                            <option>Mobile & Tablet</option>
-                                            <option>Electric Appliances</option>
-                                            <option>Electronics & Technology</option>
-                                            <option>Fashion</option>
-                                            <option>Health & Beauty</option>
-                                            <option>Mother & Baby</option>
-                                            <option>Books & Stationery</option>
-                                            <option>Home & Life</option>
-                                            <option>Sports & Outdoors</option>
-                                            <option>Auto & Moto</option>
-                                            <option>Voucher Service</option>
+											<option value="all">Toutes les catégories</option>
+											@foreach ($categories as $category)
+												<option>{{ $category->name }}</option>
+											@endforeach
                                         </select>
                                     </div>
-                                    <input type="text" name="s" placeholder="Enter keyword here . . .">
-                                    <button type="submit" class="animate-default button-hover-red">Search</button>
+                                    <input type="text" name="s" placeholder="Entrer un mot . . .">
+                                    <button type="submit" class="animate-default button-hover-red">Rechercher</button>
                                 </form>
                             </div>
                             <div class="clearfix icon-search-mobile absolute">
@@ -201,39 +184,33 @@
                             </div>
                             <div class="clearfix cart-website absolute" onclick="showCartBoxDetail()">
                                 <img alt="Icon Cart" src="img/icon_cart.png" />
-                                <p class="count-total-shopping absolute">2</p>
+                                <p class="count-total-shopping absolute">{{ Cart::count() }}</p>
                             </div>
                             <div class="clearfix cart-website absolute" onclick="showCartBoxDetail()">
                                 <img alt="Icon Cart" src="img/icon_cart.png" />
-                                <p class="count-total-shopping absolute">2</p>
+                                <p class="count-total-shopping absolute">{{ Cart::count() }}</p>
                             </div>
                             <div class="cart-detail-header border">
                                 <div class="relative">
+                                    @foreach (Cart::content() as $cartProduct)
+
                                     <div class="product-cart-son clearfix">
                                         <div class="image-product-cart float-left center-vertical-image ">
-                                            <a href="#"><img src="img/product_image_6-min.png" alt="" /></a>
+                                            <a href="#"><img src="img/img_270x270/{{ $cartProduct->model->photo }}" alt="" /></a>
                                         </div>
                                         <div class="info-product-cart float-left">
-                                            <p class="title-product title-hover-black"><a class="animate-default" href="#">MH02-Black09</a></p>
-                                            <p class="clearfix price-product">$350 <span class="total-product-cart-son">(x1)</span></p>
+                                            <p class="title-product title-hover-black"><a class="animate-default" href="#">{{ $cartProduct->name }}</a></p>
+                                            <p class="clearfix price-product">  <span class="total-product-cart-son">(x{{ $cartProduct->qty }})</span> {{ $cartProduct->price }} F CFA</p>
                                         </div>
                                     </div>
-                                    <div class="product-cart-son">
-                                        <div class="image-product-cart float-left center-vertical-image">
-                                            <a href="#"><img src="img/product_image_7-min.png" alt="" /></a>
-                                        </div>
-                                        <div class="info-product-cart float-left">
-                                            <p class="title-product title-hover-black"><a class="animate-default" href="#">Voyage Yoga Bag</a></p>
-                                            <p class="clearfix price-product">$350 <span class="total-product-cart-son">(x1)</span></p>
-                                        </div>
-                                    </div>
+                                    @endforeach
                                 </div>
                                 <div class="relative border no-border-l no-border-r total-cart-header">
-                                    <p class="bold clear-margin">Subtotal:</p>
-                                    <p class=" clear-margin bold">$700</p>
+                                    <p class="bold clear-margin">Sous-total:</p>
+                                    <p class=" clear-margin bold">{{ Cart::total() }} F CFA</p>
                                 </div>
                                 <div class="relative btn-cart-header">
-                                    <a href="#" class="uppercase bold animate-default">view cart</a>
+								<a href="{{ route('cart') }}" class="uppercase bold animate-default">Votre panier</a>
                                     <a href="#" class="uppercase bold button-hover-red animate-default">checkout</a>
                                 </div>
                             </div>
@@ -244,7 +221,7 @@
                     </div>
                     <div class="row">
                         <a class="menu-vertical hidden-md hidden-lg" onclick="showMenuMobie()">
-							<span class="animate-default"><i class="fa fa-list" aria-hidden="true"></i> all categories</span>
+							<span class="animate-default"><i class="fa fa-list" aria-hidden="true"></i> Toutes les catégories</span>
 						</a>
                     </div>
                 </div>
@@ -255,7 +232,7 @@
                         <!-- Menu Page -->
                         <div class="menu-header full-width">
                             <ul class="clear-margin">
-                                <li onclick="showMenuHomeV3()"><a class="animate-default" href="#"><i class="fa fa-list" aria-hidden="true"></i> all categories</a></li>
+                                <li onclick="showMenuHomeV3()"><a class="animate-default" href="#"><i class="fa fa-list" aria-hidden="true"></i> Toutes les catégories</a></li>
                                 <li class="title-hover-red">
                                     <a class="animate-default" href="#">home</a>
                                     <ul class="sub-menu mega-menu">
@@ -327,19 +304,9 @@
             </div>
             <div class="clearfix menu_more_header menu-web menu-bg-white">
                 <ul>
-                    <li><a href="#"><img src="img/icon_hot_gray.png" alt="Icon Hot Deals" /> <p>Hot Deals</p></a></li>
-                    <li><a href="#"><img src="img/icon_food_gray.png" alt="Icon Food" /> <p>Food</p></a></li>
-                    <li><a href="#"><img src="img/icon_mobile_gray.png" alt="Icon Mobile & Tablet" /> <p>Mobile & Tablet</p></a></li>
-                    <li><a href="#"><img src="img/icon_electric_gray.png" alt="Icon Electric Appliances" /> <p>Electric Appliances</p></a></li>
-                    <li><a href="#"><img src="img/icon_computer_gray.png" alt="Icon Electronics & Technology" /> <p>Electronics & Technology</p></a></li>
-                    <li><a href="#"><img src="img/icon_fashion_gray.png" alt="Icon Fashion" /> <p>Fashion</p></a></li>
-                    <li><a href="#"><img src="img/icon_health_gray.png" alt="Icon Health & Beauty" /> <p>Health & Beauty</p></a></li>
-                    <li><a href="#"><img src="img/icon_mother_gray.png" alt="Icon Mother & Baby" /> <p>Mother & Baby</p></a></li>
-                    <li><a href="#"><img src="img/icon_book_gray.png" alt="Icon Books & Stationery" /> <p>Books & Stationery</p></a></li>
-                    <li><a href="#"><img src="img/icon_home_gray.png" alt="Icon Home & Life" /> <p>Home & Life</p></a></li>
-                    <li><a href="#"><img src="img/icon_sport_gray.png" alt="Icon Sports & Outdoors" /> <p>Sports & Outdoors</p></a></li>
-                    <li><a href="#"><img src="img/icon_auto_gray.png" alt="Icon Auto & Moto" /> <p>Auto & Moto</p></a></li>
-                    <li><a href="#"><img src="img/icon_voucher_gray.png" alt="Icon Voucher Service" /> <p>Voucher Service</p></a></li>
+					@foreach ($categories as $category)
+					<li><a href="{{ route('category', ['name' => $category->name]) }}"><img src="img/{{ $category->photo }}" alt="Icon {{ $category->name }}" /> <p>{{ $category->name }}</p></a></li>
+					@endforeach
                 </ul>
             </div>
             <div class="header-ontop">
@@ -495,7 +462,7 @@
 									<!-- Info Top Product -->
 									<div class="col-md-5 col-sm-12 col-xs-12">
 										<div class="name-ranking-product relative bottom-padding-15-default bottom-margin-15-default border no-border-r no-border-t no-border-l">
-											<h1 class="name-product">{{ $product->name }}</h1>
+										<h1 class="name-product">{{ $product->name }}</h1>
 											<div class=" ranking-color ">
 												<i class="fa fa-star" aria-hidden="true"></i>
 												<i class="fa fa-star" aria-hidden="true"></i>
@@ -524,7 +491,8 @@
 										<div class="relative intro-product-detail bottom-margin-15-default bottom-padding-15-default border no-border-r no-border-t no-border-l">
 										<p class="clear-margin">{{ $product->description }}</p>
 										</div>
-									<form action="{{ route('cart.add') }}" method="post">
+										{{-- action="{{ route('cart.add') }}" method="post" --}}
+									<form action="{{ route('cart.add') }}" method="post" role="form" >
 										{{ csrf_field() }}
 										<div class="relative option-product-detail bottom-padding-15-default border no-border-r no-border-t no-border-l">
 											<p class="bold clear-margin bottom-margin-15-default">Available Options:</p>
@@ -588,7 +556,12 @@
 										</div>
 										<div class="relative button-product-list clearfix full-width clear-margin">
 											<ul class="clear-margin top-margin-default clearfix bottom-margin-default">
-												<li class="button-hover-red"><button class="animate-default">Add to Cart</button></li>
+												@if ($product->status == 1)
+												<li class="button-hover-red"><button class="animate-default" type="submit" id="addToCart">Ajouter au panier</button></li>
+												@else
+												<li class="button-hover-red"><button type="submit" id="addToCart" disabled class="animate-default">Ajouter au panier</button></li>
+												@endif
+												{{--  <li class="button-hover-red"><button class="animate-default">Ajouter au panier</button></li>  --}}
 												<li><a href="#" class="animate-default"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
 												<li><a href="#" class="animate-default"><i class="fa fa-signal" aria-hidden="true"></i></a></li>
 												<li><a href="#" class="animate-default"><i class="fa fa-search" aria-hidden="true"></i></a></li>
@@ -800,6 +773,9 @@
 				</div>
 			</div>
 			<!-- End Sider Bar -->
+			<!-- Content Modal -->
+            @include('layouts.partials._quickview')
+            <!-- End Content Modal -->
 			<!-- Support -->
 			<div class=" support-box full-width bg-red support_box_v2">
 				<div class="container-web">
@@ -923,6 +899,7 @@
 		</footer>
 	</div>
 	</div>
+
 	<!-- End Footer Box -->
 	<script src="js/jquery-3.3.1.min.js" defer=""></script>
 	<script src="js/bootstrap.min.js" defer=""></script>
@@ -930,5 +907,6 @@
 	<script src="js/slick.min.js" defer=""></script>
 	<script src="js/owl.carousel.min.js" defer=""></script>
 	<script src="js/scripts.js" defer=""></script>
+	{{-- <script src="js/cart.js" defer=""></script> --}}
 </body>
 </html>
