@@ -50,15 +50,15 @@
                             <div class="clearfix title-box full-width bottom-margin-default border bg-white">
                                 <div class="clearfix name-title-box title-hot-bg relative">
                                     <img src="img/icon_percent.png" class="absolute" alt="Icon Hot Deals" />
-                                    <p>good deal today</p>
+                                    <p>Les meilleurs du jour</p>
                                 </div>
                                 <div class="clearfix menu-title-box bold uppercase">
                                     <ul>
-                                        <li><a onclick="showBoxCateHomeByID('#mobile-tablet','.good-deal-product')" href="javascript:;">mobile & tablet</a></li>
-                                        <li><a onclick="showBoxCateHomeByID('#food','.good-deal-product')" href="javascript:;">food</a></li>
-                                        <li><a onclick="showBoxCateHomeByID('#home-life','.good-deal-product')" href="javascript:;">home & life</a></li>
-                                        <li><a onclick="showBoxCateHomeByID('#fashion','.good-deal-product')" href="javascript:;">fashion</a></li>
-                                        <li><a onclick="showBoxCateHomeByID('#auto-moto','.good-deal-product')" href="javascript:;">auto & moto</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#fruit','.good-deal-product')" href="javascript:;">Fruit</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#legume','.good-deal-product')" href="javascript:;">Légume</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#viande','.good-deal-product')" href="javascript:;">Viande</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#fashion','.good-deal-product')" href="javascript:;">Lorem</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#auto-moto','.good-deal-product')" href="javascript:;">ipsum</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -66,10 +66,33 @@
                         <div class="clearfix content-product-box bottom-margin-default full-width">
                             <div class="row">
                                 <div class="relative">
-                                    <div class="good-deal-product animate-default active-box-category hidden-content-box" id="mobile-tablet">
+                                    <div class="good-deal-product animate-default active-box-category hidden-content-box" id="fruit">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
+                                            @foreach ($fruit_min as $item)
                                             <div class=" product-son ">
+                                                <div class="clearfix image-product relative animate-default">
+                                                    <div class="center-vertical-image">
+                                                    <img src="img/img_270x270/{{ $item->photo }}" alt="{{$item->name}}" />
+                                                    </div>
+                                                    <ul class="option-product animate-default">
+                                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                                        <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix ranking">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $item->name }}</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
+                                            </div>
+                                            @endforeach
+                                            {{-- <div class=" product-son ">
                                                 <div class="clearfix image-product relative animate-default">
                                                     <div class="center-vertical-image">
                                                         <img src="img/img_product.png" alt="Product . . ." />
@@ -152,14 +175,37 @@
                                                 </div>
                                                 <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">Fermentum velit</a></p>
                                                 <p class="clearfix price-product"><span class="price-old">$700</span> $350</p>
-                                            </div>
+                                            </div> --}}
                                             <!-- End Product Son -->
                                         </div>
                                     </div>
-                                    <div class="good-deal-product animate-default hidden-content-box" id="food">
+                                    <div class="good-deal-product animate-default hidden-content-box" id="legume">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
+                                            @foreach ($legume_min as $item)
                                             <div class=" product-son ">
+                                                <div class="clearfix image-product relative animate-default">
+                                                    <div class="center-vertical-image">
+                                                    <img src="img/img_270x270/{{ $item->photo }}" alt="{{ $item->name }}" />
+                                                    </div>
+                                                    <ul class="option-product animate-default">
+                                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                                        <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix ranking">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $item->name }}</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
+                                            </div>
+                                            @endforeach
+                                            {{-- <div class=" product-son ">
                                                 <div class="clearfix image-product relative animate-default">
                                                     <div class="center-vertical-image">
                                                         <img src="img/product_home_8-min.png" alt="Product . . ." />
@@ -242,14 +288,37 @@
                                                 </div>
                                                 <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">Lorem ipsum dolor sit amet</a></p>
                                                 <p class="clearfix price-product"><span class="price-old">$700</span> $350</p>
-                                            </div>
+                                            </div> --}}
                                             <!-- End Product Son -->
                                         </div>
                                     </div>
-                                    <div class="good-deal-product animate-default hidden-content-box" id="home-life">
+                                    <div class="good-deal-product animate-default hidden-content-box" id="viande">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
+                                            @foreach ($viande_min as $item)
                                             <div class=" product-son ">
+                                                <div class="clearfix image-product relative animate-default">
+                                                    <div class="center-vertical-image">
+                                                        <img src="img/img_270x270/{{ $item->photo }}" alt="{{ $item->name }}" />
+                                                    </div>
+                                                    <ul class="option-product animate-default">
+                                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
+                                                        <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                                <div class="clearfix ranking">
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-half" aria-hidden="true"></i>
+                                                    <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                </div>
+                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $item->name }}</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
+                                            </div>
+                                            @endforeach
+                                            {{-- <div class=" product-son ">
                                                 <div class="clearfix image-product relative animate-default">
                                                     <div class="center-vertical-image">
                                                         <img src="img/product_home_13-min.png" alt="Product . . ." />
@@ -332,7 +401,7 @@
                                                 </div>
                                                 <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">Sea accusata voluptatibus</a></p>
                                                 <p class="clearfix price-product"><span class="price-old">$700</span> $350</p>
-                                            </div>
+                                            </div> --}}
                                             <!-- End Product Son -->
                                         </div>
                                     </div>
@@ -530,11 +599,11 @@
                         <div class="clearfix title-box full-width border">
                             <div class="clearfix name-title-box title-category title-green-bg relative">
                                 <img alt="Icon Food" src="img/icon_food.png" class="absolute" />
-                                <p>food</p>
+                                <p>Fruit</p>
                             </div>
                             <div class="clearfix menu-title-box bold uppercase">
                                 <ul>
-                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#confectionery','.box-food-content')">Confectionery</a></li>
+                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#confectionery','.box-food-content')">fruit</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#milk-cream','.box-food-content')">Milk & Cream</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#dry-food','.box-food-content')">Dry Food</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#vegetables','.box-food-content')">Vegetables</a></li>
@@ -554,12 +623,24 @@
                                 </ul>
                             </div>
                             <div class=" banner-category banner-category-v1 float-left relative effect-bubba zoom-image-hover">
-                                <img src="img/banner1.png" alt="Banner">
+                                <img src="img/banner_fruit.jpg" alt="Banner Fruit">
                                 <a href="#"></a>
                             </div>
                             <div class="clearfix list-products-category list-products-category-v1 float-left relative">
-                                <div class="box-food-content relative animate-default active-box-category hidden-content-box border-collapsed-box" id="confectionery">
+                                <div class="box-food-content relative animate-default active-box-category hidden-content-box border-collapsed-box" id="fruit">
+                                    @foreach ($fruit as $item)
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
+                                        <div class="effect-hover-zoom center-vertical-image">
+                                        <img src="img/img_290x290/{{ $item->photo }}" alt="{{ $item->name }}">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="clearfix absolute name-product-no-ranking">
+                                            <p class="title-product clearfix full-width title-hover-black"><a href="#">{{ $item->name }}</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">$650</span> {{ $item->prix }} F CFA</p>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    {{-- <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
                                         <div class="effect-hover-zoom center-vertical-image">
                                             <img src="img/img_product_category.png" alt="Product Image . . .">
                                             <a href="#"></a>
@@ -598,7 +679,7 @@
                                             <p class="title-product clearfix full-width title-hover-black"><a href="#">Impulse Duffle2</a></p>
                                             <p class="clearfix price-product"><span class="price-old">$356</span> $784</p>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="box-food-content relative animate-default hidden-content-box border-collapsed-box" id="milk-cream">
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
@@ -793,11 +874,11 @@
                         <div class="clearfix title-box full-width border">
                             <div class="clearfix name-title-box title-category title-jungle-green-bg relative">
                                 <img alt="Icon Mobile & Tablet" src="img/icon_mobile.png" class="absolute" />
-                                <p>mobile & tablet</p>
+                                <p>Légumes</p>
                             </div>
                             <div class="clearfix menu-title-box bold uppercase">
                                 <ul>
-                                    <li><a onclick="showBoxCateHomeByID('#smart-phone','.box-mobile-content')" href="javascript:;">Smart phone</a></li>
+                                    <li><a onclick="showBoxCateHomeByID('#legume','.box-mobile-content')" href="javascript:;">Légumes</a></li>
                                     <li><a onclick="showBoxCateHomeByID('#tablet','.box-mobile-content')" href="javascript:;">Tablet</a></li>
                                     <li><a onclick="showBoxCateHomeByID('#smart-watch','.box-mobile-content')" href="javascript:;">Smart Watch</a></li>
                                     <li><a onclick="showBoxCateHomeByID('#case','.box-mobile-content')" href="javascript:;">Case</a></li>
@@ -817,12 +898,24 @@
                                 </ul>
                             </div>
                             <div class=" banner-category float-left relative effect-bubba zoom-image-hover">
-                                <img src="img/banner_category_1-min.png" alt="Banner">
+                                <img src="img/banner_legume.jpg" alt="Banner Légume">
                                 <a href="#"></a>
                             </div>
                             <div class="clearfix list-products-category list-products-category-v1 float-left relative">
-                                <div class="box-mobile-content border-collapsed-box animate-default hidden-content-box active-box-category" id="smart-phone">
+                                <div class="box-mobile-content border-collapsed-box animate-default hidden-content-box active-box-category" id="legume">
+                                    @foreach ($legume as $item)
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
+                                        <div class="effect-hover-zoom center-vertical-image">
+                                        <img src="img/img_290x290/{{ $item->photo }}" alt="{{ $item->name }}">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="clearfix absolute name-product-no-ranking">
+                                            <p class="title-product clearfix full-width title-hover-black"><a href="#">{{ $item->name }}</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">$600</span> {{ $item->prix }} F CFA</p>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    {{-- <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
                                         <div class="effect-hover-zoom center-vertical-image">
                                             <img src="img/img_product_category_4-min.png" alt="Product Image . . .">
                                             <a href="#"></a>
@@ -861,7 +954,7 @@
                                             <p class="title-product clearfix full-width title-hover-black"><a href="#">Est cu nibh clita</a></p>
                                             <p class="clearfix price-product"><span class="price-old">$600</span> $300</p>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="box-mobile-content border-collapsed-box animate-default hidden-content-box" id="tablet">
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
@@ -1056,11 +1149,11 @@
                         <div class="clearfix title-box full-width border">
                             <div class="clearfix name-title-box title-category title-turquoise-bg relative">
                                 <img alt="Icon Electric" src="img/icon_electric.png" class="absolute" />
-                                <p>Electric</p>
+                                <p>Viande</p>
                             </div>
                             <div class="clearfix menu-title-box bold uppercase">
                                 <ul>
-                                    <li><a onclick="showBoxCateHomeByID('#television','.box-electric-content')" href="javascript:;">television</a></li>
+                                    <li><a onclick="showBoxCateHomeByID('#volaille','.box-electric-content')" href="javascript:;">Volaille</a></li>
                                     <li><a onclick="showBoxCateHomeByID('#laptop','.box-electric-content')" href="javascript:;">laptop</a></li>
                                     <li><a onclick="showBoxCateHomeByID('#camera','.box-electric-content')" href="javascript:;">camera</a></li>
                                     <li><a onclick="showBoxCateHomeByID('#audio','.box-electric-content')" href="javascript:;">audio</a></li>
@@ -1080,12 +1173,24 @@
                                 </ul>
                             </div>
                             <div class=" banner-category float-left relative zoom-image-hover effect-bubba">
-                                <img src="img/banner_category_1.png" alt="Banner">
+                                <img src="img/banner_viande.png" alt="Banner">
                                 <a href="#"></a>
                             </div>
                             <div class="clearfix list-products-category list-products-category-v1 float-left relative">
-                                <div class="border-collapsed-box active-box-category hidden-content-box box-electric-content animate-default" id="television">
+                                <div class="border-collapsed-box active-box-category hidden-content-box box-electric-content animate-default" id="volaille">
+                                    @foreach ($volaille as $item)
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
+                                        <div class="effect-hover-zoom center-vertical-image">
+                                        <img src="img/img_290x290/{{ $item->photo }}" alt="{{ $item->name }}">
+                                            <a href="#"></a>
+                                        </div>
+                                        <div class="clearfix absolute name-product-no-ranking">
+                                            <p class="title-product clearfix full-width title-hover-black"><a href="#">{{ $item->name }}</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
+                                        </div>
+                                    </div>
+                                    @endforeach
+                                    {{-- <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
                                         <div class="effect-hover-zoom center-vertical-image">
                                             <img src="img/img_product_category_8-min.png" alt="Product Image . . .">
                                             <a href="#"></a>
@@ -1124,7 +1229,7 @@
                                             <p class="title-product clearfix full-width title-hover-black"><a href="#">Aenean ultrices tincidunt</a></p>
                                             <p class="clearfix price-product"><span class="price-old">$700</span> $350</p>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <div class="border-collapsed-box hidden-content-box box-electric-content animate-default" id="laptop">
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
