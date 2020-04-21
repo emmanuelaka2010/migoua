@@ -69,18 +69,16 @@
                                     <div class="good-deal-product animate-default active-box-category hidden-content-box" id="fruit">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
-                                            @foreach ($fruit_min as $fm)
-                                            
+                                            @foreach ($fruit_min as $item)
                                             <div class=" product-son ">
                                                 <div class="clearfix image-product relative animate-default">
                                                     <div class="center-vertical-image">
-                                                    <img src="img/img_270x270/{{ $fm->photo }}" alt="{{$fm->name}}" />
+                                                    <img src="img/img_270x270/{{ $item->photo }}" alt="{{$item->name}}" />
                                                     </div>
                                                     <ul class="option-product animate-default">
-                                                    <li class="relative"><a href="{{ route('product', ['cat' => 'fruit' , 'num' => $fm->id, 'prod' => $fm->name ]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
                                                         <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
-                                                        <li class="relative"><a href="javascript:;" class="show-modal" data-id="{{ $fm->id }}" data-name="{{ $fm->name }}" data-description="{{ $fm->description }}" data-photo="{{ $fm->photo }}" data-prix="{{ $fm->prix }}" data-toggle="modal" data-target="#quickview"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
-                                                        {{-- <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li> --}}
+                                                        <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li>
                                                     </ul>
                                                 </div>
                                                 <div class="clearfix ranking">
@@ -90,8 +88,8 @@
                                                     <i class="fa fa-star-half" aria-hidden="true"></i>
                                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                                 </div>
-                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $fm->name }}</a></p>
-                                                <p class="clearfix price-product"><span class="price-old">$700</span> {{ $fm->prix }} F CFA</p>
+                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $item->name }}</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
                                             </div>
                                             @endforeach
                                             {{-- <div class=" product-son ">
@@ -1816,8 +1814,8 @@
             </div>
             <!-- End Banner Full With -->
             <!-- Content Modal -->
-            @if (isset($fm))
-            @include('layouts.partials._fruit_quickview')
+            @if (isset($product))
+            @include('layouts.partials._quickview')
             @endif
             <!-- End Content Modal -->
             <!-- Support -->

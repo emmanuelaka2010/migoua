@@ -460,7 +460,7 @@
 										<p class="text-red">$350.00</p>
 									</td>
 									<td>
-										<p class="text-red"><i class="fa fa-check-circle" aria-hidden="true"></i> In Stock</p>
+										<p class="text-green"><i class="fa fa-check-circle" aria-hidden="true"></i> In Stock</p>
 									</td>
 									<td>
 										<a href="#" class="animate-default">shop now</a>
@@ -477,7 +477,7 @@
 										<p class="text-red">$350.00</p>
 									</td>
 									<td>
-										<p class=""><i class="fa fa-check-circle" aria-hidden="true"></i> Out Stock</p>
+										<p class="text-red"><i class="fa fa-check-circle" aria-hidden="true"></i> Out Stock</p>
 									</td>
 									<td>
 										<a href="#" class="animate-default">shop now</a>
@@ -494,7 +494,7 @@
 										<p class="text-red">$350.00</p>
 									</td>
 									<td>
-										<p class="text-red"><i class="fa fa-check-circle" aria-hidden="true"></i> In Stock</p>
+										<p class="text-green"><i class="fa fa-check-circle" aria-hidden="true"></i> In Stock</p>
 									</td>
 									<td>
 										<a href="#" class="animate-default">shop now</a>

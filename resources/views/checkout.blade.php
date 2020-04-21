@@ -446,13 +446,13 @@
 									<form method="POST" action="{{ route('login') }}" class="form-placeholde-animate">
 										<div class="field-wrap">
 								            <label>
-								            	Nom d'utilisateur ou Email<span class="req">*</span>
+								            	Email <span class="text-red">*</span>
 								            </label>
 								            <input type="text" name="email" required autocomplete="off" />
 							            </div>
 							            <div class="field-wrap">
 								            <label>
-								            	Mot de passe<span class="req">*</span>
+								            	Mot de passe<span class="text-red">*</span>
 								            </label>
 								            <input type="password" name="password" required autocomplete="off" />
 							            </div>

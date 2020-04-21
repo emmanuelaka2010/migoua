@@ -422,7 +422,8 @@
     <div class="relative container-web">
         <div class="container">
             <div class="row relative">
-                <form action="{{ route('register') }}" method="post">
+                <form action="{{ route('register') }}" method="POST">
+                    @csrf
                     <div class="col-md-8 col-sm-12 col-xs-12 relative left-content-shoping clear-padding-left">
                         <p class="title-shoping-cart">Inscription</p>
 						<div class="relative clearfix full-width">

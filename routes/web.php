@@ -15,6 +15,7 @@
 Route::get('/', 'PageController@index')->name('index');
 Route::get('/category', 'PageController@category')->name('category');
 Route::get('/product', 'PageController@product')->name('product');
+Route::get('/wishlist', 'PageController@wishlist')->name('wishlist');
 Route::get('/cart', 'CartController@cart')->name('cart');
 Route::get('/cart/delete/{id}', 'CartController@cart_delete')->name('cart.delete');
 Route::get('checkout', 'CheckoutController@index')->name('checkout');

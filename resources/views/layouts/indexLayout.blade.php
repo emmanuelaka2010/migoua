@@ -132,8 +132,10 @@
                             </p>
                             <div class="clear-padding menu-header-top text-right col-md-8 col-xs-12 col-sm-6">
                                 <ul class="clear-margin">
+                                    <li class="relative"><a href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
+                                    <li class="relative"><a href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
                                     <li class="relative"><a href="#">My Account</a></li>
-                                    <li class="relative"><a href="#">Wishlist</a></li>
+                                    <li class="relative"><a href="#">Mes préférés</a></li>
                                     <li class="relative">
                                         <a href="#">EN</a>
                                         <ul>

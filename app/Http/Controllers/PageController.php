@@ -20,6 +20,7 @@ class PageController extends Controller
                             ->orderBy("prix", "asc")
                             ->limit(5)
                             ->get();
+    
         // Les légumes;
         $legume_min = Product::where("id_sub_category", 4)
                             ->orderBy("prix", "asc")
@@ -76,5 +77,9 @@ class PageController extends Controller
         $product = $product[0];
         // dd($product->status);
         return view('product', compact('product', 'categories', 'title'));
+    }
+
+    public function wishlist(){
+        return view('wishlist');
     }
 }

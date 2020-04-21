@@ -52,7 +52,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'firstname' => ['required', 'string', 'max:255'],
             'lastname' => ['required', 'string', 'max:255'],
-            'number' => ['integer', 'max:8'],// telephone
+            'number' => ['integer'],// telephone
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
         ]);
@@ -81,7 +81,7 @@ class RegisterController extends Controller
      * @return array
      */
 
-    public function messages()
+    public function message()
     {
         return [
             'firstname.required' => 'Veuillez entrer votre prénom',
