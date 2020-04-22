@@ -53,7 +53,7 @@
 									</div>
 									<a href="#"></a>
 									<ul class="option-product animate-default">
-										<li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+										<li class="relative"><a href="{{ route('product', ['cat' => $name, 'num' => $product->id,'prod' => str_replace(" ", "-", $product->name)]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
 										<li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
 									<li class="relative"><a href="javascript:;" class="show-modal" data-id="{{ $product->id }}" data-name="{{ $product->name }}" data-description="{{ $product->description }}" data-photo="{{ $product->photo }}" data-prix="{{ $product->prix }}" data-toggle="modal" data-target="#quickview"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
 									</ul>

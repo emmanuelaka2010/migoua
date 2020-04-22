@@ -56,9 +56,13 @@ class PageController extends Controller
     }
 
     public function category() {
+        // Le titre de la page
         $title = 'Categories';
+        // Le nom de la catégorie
         $name = $_GET['name'];
+        // Réquête pour récupérer toutes les catégories dans la BD
         $categories = Categories::all();
+        // Réquête pour récupérer tous les produits de cette catégorie dans la BD
         $products = DB::table('categories')
                 ->join('sub_categories', 'categories.id', '=', 'sub_categories.id_category')
                 ->join('products', 'sub_categories.id', '=', 'products.id_sub_category')
@@ -69,14 +73,26 @@ class PageController extends Controller
     }
 
     public function product() {
+        // Le titre de la page
         $title = 'Produit';
-        $id = $_GET['num'];
+        // Réquête pour récuperer tous les catégories
         $categories = Categories::all();
+        // L'id du produit selectionné
+        $id = $_GET['num'];
+
+        // Réquête pour selectionner le produit dans la BD à partir de son id.
         $product = Product::where('id', $id)->get();
-        // dd($product);
         $product = $product[0];
         // dd($product->status);
-        return view('product', compact('product', 'categories', 'title'));
+        // Réquête pour récuperer la catégorie du produit selectionné
+        // $category_prod = DB::table('categories')
+        //                     ->select('categories.name')
+        //                     ->join('sub_categories', 'categories.id', '=', 'sub_categories.id_category')
+        //                     ->join('products', 'sub_categories.id', '=', 'products.id_sub_category')
+        //                     ->where('products.id', $id)
+        //                     ->get();
+        $category_prod = $_GET['cat'];
+        return view('product', compact('product', 'categories', 'category_prod', 'title'));
     }
 
     public function wishlist(){

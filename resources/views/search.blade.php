@@ -42,17 +42,17 @@
 							<div class="col-md-4 col-sm-4 col-xs-12 product-category relative effect-hover-boxshadow animate-default">
 								<div class="image-product relative overfollow-hidden">
 									<div class="center-vertical-image">
-									<img src="img/img_270x270/{{ $product->photo }}" alt="Product">
+									<img src="img/img_270x270/{{ $product->p_photo }}" alt="Product">
 									</div>
-									<a href="#"></a>
+									<a href="{{ route('product', ['cat' => $product->c_name, 'num' => $product->p_id, 'prod' => str_replace(" ", "-", $product->p_name)]) }}"></a>
 									<ul class="option-product animate-default">
-										<li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+										<li class="relative"><a href="{{ route('product', ['cat' => $product->c_name, 'num' => $product->p_id, 'prod' => str_replace(" ", "-", $product->p_name)]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
 										<li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
 										<li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
 									</ul>
 								</div>
-							<h3 class="title-product clearfix full-width title-hover-black"><a href="{{ route('product', ['name' => str_replace(" ", "-", $product->name), 'num' => $product->id]) }}">{{ $product->name }}</a></h3>
-							<p class="clearfix price-product"><span class="price-old">$700</span> {{ $product->prix }} F CFA</p>
+							<h3 class="title-product clearfix full-width title-hover-black"><a href="{{ route('product', ['cat' => $product->c_name, 'num' => $product->p_id, 'prod' => str_replace(" ", "-", $product->p_name)]) }}">{{ $product->p_name }}</a></h3>
+							<p class="clearfix price-product"><span class="price-old">$700</span> {{ $product->p_prix }} F CFA</p>
 								<div class="clearfix ranking-product-category ranking-color">
 									<i class="fa fa-star" aria-hidden="true"></i>
 									<i class="fa fa-star" aria-hidden="true"></i>

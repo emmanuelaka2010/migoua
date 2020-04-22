@@ -399,10 +399,10 @@
 					<div class="row">
 						<div class="breadcrumb-web">
 							<ul class="clear-margin">
-								<li class="animate-default title-hover-red"><a href="#">Home</a></li>
-								<li class="animate-default title-hover-red"><a href="#">All Products</a></li>
-								<li class="animate-default title-hover-red"><a href="#">Mobile & Tablet</a></li>
-								<li class="animate-default title-hover-red"><a href="#">Apple iPhone X</a></li>
+							<li class="animate-default title-hover-red"><a href="{{ route('index') }}">Accueil</a></li>
+								{{--  <li class="animate-default title-hover-red"><a href="#">Tous les produits</a></li>  --}}
+							<li class="animate-default title-hover-red"><a href="{{ route('category', ['name' => $category_prod]) }}">{{ $category_prod }}</a></li>
+								<li class="animate-default title-hover-red"><a href="#">{{ $product->name }}</a></li>
 							</ul>
 						</div>
 					</div>
@@ -428,36 +428,36 @@
 									<div class="col-md-7 relative col-sm-12 col-xs-12">
 										<div id="owl-big-slide" class="relative sync-owl-big-image">
 										  <div class="item center-vertical-image">
-										    <img src="img/img_400x400/poulet_1.png" alt="Image Big Slide">
+										    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Big Slide">
 										  </div>
 										  <div class="item center-vertical-image">
-										    <img src="img/img_400x400/poulet_2.png" alt="Image Big Slide">
+										    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Big Slide">
 										  </div>
 										  <div class="item center-vertical-image">
-										    <img src="img/img_400x400/poulet_3.png" alt="Image Big Slide">
+										    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Big Slide">
 										  </div>
 										  <div class="item center-vertical-image">
-										    <img src="img/img_400x400/poulet_2.png" alt="Image Big Slide">
+										    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Big Slide">
 										  </div>
 										</div>
-										<div class="relative thumbnail-slide-detail">
+										{{--  <div class="relative thumbnail-slide-detail">
 											<div id="owl-thumbnail-slide" class="sync-owl-thumbnail-image" data-items="3,4,3,2">
 											  <div class="item center-vertical-image">
-											    <img src="img/img_400x400/poulet_1.png" alt="Image Thumbnail Slide">
+											    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Thumbnail Slide">
 											  </div>
 											  <div class="item center-vertical-image">
-											    <img src="img/img_400x400/poulet_2.png" alt="Image Thumbnail Slide">
+											    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Thumbnail Slide">
 											  </div>
 											  <div class="item center-vertical-image">
-											    <img src="img/img_400x400/poulet_3.png" alt="Image Thumbnail Slide">
+											    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Thumbnail Slide">
 											  </div>
 											  <div class="item center-vertical-image">
-											    <img src="img/img_400x400/poulet_2.png" alt="Image Thumbnail Slide">
+											    <img src="img/img_400x400/{{ $product->photo }}" alt="Image Thumbnail Slide">
 											  </div>
 											</div>
 											<div class="relative nav-prev-detail btn-slide-detail"></div>
 											<div class="relative nav-next-detail btn-slide-detail"></div>
-										</div>
+										</div>  --}}
 									</div>
 									<!-- Info Top Product -->
 									<div class="col-md-5 col-sm-12 col-xs-12">
@@ -472,7 +472,7 @@
 											</div>
 											<p class="clearfix price-product"><span class="price-old">$700.00</span> {{ $product->prix }} F CFA</p>
 											<div class="product-code clearfix full-width">
-												<p class="float-left relative">Item Code: #453217907</p>
+												{{--  <p class="float-left relative">Item Code: #453217907</p>  --}}
 												<p class="float-left clear-margin">Disponibilité: 
 													@if ($product->status == 1)
 													<span class="text-green">
@@ -495,8 +495,8 @@
 									<form action="{{ route('cart.add') }}" method="post" role="form" >
 										{{ csrf_field() }}
 										<div class="relative option-product-detail bottom-padding-15-default border no-border-r no-border-t no-border-l">
-											<p class="bold clear-margin bottom-margin-15-default">Available Options:</p>
-											<div class="relative option-product-1 bottom-margin-15-default">
+											{{--  <p class="bold clear-margin bottom-margin-15-default">Available Options:</p>  --}}
+											{{--  <div class="relative option-product-1 bottom-margin-15-default">
 												<p class="float-left">Color:</p>
 												<ul class="check-box-custom list-color clearfix clear-margin">
 													<li>
@@ -536,14 +536,14 @@
 					  									</label>
 					  								</li>
 												</ul>
-											</div>
+											</div>  --}}
 											<div class="relative option-product-2 clearfix">
 												<div class="option-product-son float-left right-margin-default">
-													<p class="float-left">Qty:</p>
+													<p class="float-left">Qantité:</p>
 													<input type="number" class="left-margin-15-default" min="01" step="1" max="10" value="1" name="num">
 												<input type="hidden" name="product_id" value="{{ $product->id }}">
 												</div>
-												<div class="option-product-son float-left">
+												{{--  <div class="option-product-son float-left">
 													<p class="float-left">Size:</p>
 													<select class="">
 														<option value="x">X</option>
@@ -551,7 +551,7 @@
 														<option value="xl">XL</option>
 														<option value="xxl">XXL</option>
 													</select>
-												</div>
+												</div>  --}}
 											</div>
 										</div>
 										<div class="relative button-product-list clearfix full-width clear-margin">

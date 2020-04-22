@@ -77,7 +77,7 @@
                                                     <img src="img/img_270x270/{{ $fm->photo }}" alt="{{$fm->name}}" />
                                                     </div>
                                                     <ul class="option-product animate-default">
-                                                    <li class="relative"><a href="{{ route('product', ['cat' => 'fruit' , 'num' => $fm->id, 'prod' => $fm->name ]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                    <li class="relative"><a href="{{ route('product', ['cat' => 'fruit' , 'num' => $fm->id, 'prod' => str_replace(" ", "-", $fm->name) ]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
                                                         <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
                                                         <li class="relative"><a href="javascript:;" class="show-modal" data-id="{{ $fm->id }}" data-name="{{ $fm->name }}" data-description="{{ $fm->description }}" data-photo="{{ $fm->photo }}" data-prix="{{ $fm->prix }}" data-toggle="modal" data-target="#quickview"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
                                                         {{-- <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li> --}}
@@ -90,7 +90,7 @@
                                                     <i class="fa fa-star-half" aria-hidden="true"></i>
                                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                                 </div>
-                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $fm->name }}</a></p>
+                                            <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="{{ route('product', ['cat' => 'fruit' , 'num' => $fm->id, 'prod' => str_replace(" ", "-", $fm->name) ]) }}">{{ $fm->name }}</a></p>
                                                 <p class="clearfix price-product"><span class="price-old">$700</span> {{ $fm->prix }} F CFA</p>
                                             </div>
                                             @endforeach
@@ -184,14 +184,14 @@
                                     <div class="good-deal-product animate-default hidden-content-box" id="legume">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
-                                            @foreach ($legume_min as $item)
+                                            @foreach ($legume_min as $lm)
                                             <div class=" product-son ">
                                                 <div class="clearfix image-product relative animate-default">
                                                     <div class="center-vertical-image">
-                                                    <img src="img/img_270x270/{{ $item->photo }}" alt="{{ $item->name }}" />
+                                                    <img src="img/img_270x270/{{ $lm->photo }}" alt="{{ $lm->name }}" />
                                                     </div>
                                                     <ul class="option-product animate-default">
-                                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="{{ route('product', ['cat' => 'Légume' , 'num' => $lm->id, 'prod' => str_replace(" ", "-", $lm->name) ]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
                                                         <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
                                                         <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li>
                                                     </ul>
@@ -203,8 +203,8 @@
                                                     <i class="fa fa-star-half" aria-hidden="true"></i>
                                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                                 </div>
-                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $item->name }}</a></p>
-                                                <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
+                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="{{ route('product', ['cat' => 'Légume' , 'num' => $lm->id, 'prod' => str_replace(" ", "-", $lm->name) ]) }}">{{ $lm->name }}</a></p>
+                                                <p class="clearfix price-product"><span class="price-old">$700</span> {{ $lm->prix }} F CFA</p>
                                             </div>
                                             @endforeach
                                             {{-- <div class=" product-son ">
@@ -297,14 +297,14 @@
                                     <div class="good-deal-product animate-default hidden-content-box" id="viande">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
-                                            @foreach ($viande_min as $item)
+                                            @foreach ($viande_min as $vm)
                                             <div class=" product-son ">
                                                 <div class="clearfix image-product relative animate-default">
                                                     <div class="center-vertical-image">
-                                                        <img src="img/img_270x270/{{ $item->photo }}" alt="{{ $item->name }}" />
+                                                        <img src="img/img_270x270/{{ $vm->photo }}" alt="{{ $vm->name }}" />
                                                     </div>
                                                     <ul class="option-product animate-default">
-                                                        <li class="relative"><a href="#"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
+                                                        <li class="relative"><a href="{{ route('product', ['cat' => 'Viande' , 'num' => $vm->id, 'prod' => str_replace(" ", "-", $vm->name) ]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
                                                         <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
                                                         <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li>
                                                     </ul>
@@ -316,8 +316,8 @@
                                                     <i class="fa fa-star-half" aria-hidden="true"></i>
                                                     <i class="fa fa-star-o" aria-hidden="true"></i>
                                                 </div>
-                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="#">{{ $item->name }}</a></p>
-                                            <p class="clearfix price-product"><span class="price-old">$700</span> {{ $item->prix }} F CFA</p>
+                                                <p class="title-product clearfix full-width title-hover-black animate-default"><a class="animate-default" href="{{ route('product', ['cat' => 'Viande' , 'num' => $vm->id, 'prod' => str_replace(" ", "-", $vm->name) ]) }}">{{ $vm->name }}</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">$700</span> {{ $vm->prix }} F CFA</p>
                                             </div>
                                             @endforeach
                                             {{-- <div class=" product-son ">
@@ -605,7 +605,7 @@
                             </div>
                             <div class="clearfix menu-title-box bold uppercase">
                                 <ul>
-                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#confectionery','.box-food-content')">fruit</a></li>
+                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#confectionery','.box-food-content')">Fruit</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#milk-cream','.box-food-content')">Milk & Cream</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#dry-food','.box-food-content')">Dry Food</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#vegetables','.box-food-content')">Vegetables</a></li>
@@ -630,15 +630,15 @@
                             </div>
                             <div class="clearfix list-products-category list-products-category-v1 float-left relative">
                                 <div class="box-food-content relative animate-default active-box-category hidden-content-box border-collapsed-box" id="fruit">
-                                    @foreach ($fruit as $item)
+                                    @foreach ($fruit as $f)
                                     <div class="clearfix relative product-no-ranking border-collapsed-element percent-content-2">
                                         <div class="effect-hover-zoom center-vertical-image">
-                                        <img src="img/img_290x290/{{ $item->photo }}" alt="{{ $item->name }}">
-                                            <a href="#"></a>
+                                        <img src="img/img_290x290/{{ $f->photo }}" alt="{{ $f->name }}">
+                                            <a href="{{ route('product', ['cat' => 'Fruit' , 'num' => $f->id, 'prod' => str_replace(" ", "-", $f->name) ]) }}"></a>
                                         </div>
                                         <div class="clearfix absolute name-product-no-ranking">
-                                            <p class="title-product clearfix full-width title-hover-black"><a href="#">{{ $item->name }}</a></p>
-                                            <p class="clearfix price-product"><span class="price-old">$650</span> {{ $item->prix }} F CFA</p>
+                                            <p class="title-product clearfix full-width title-hover-black"><a href="{{ route('product', ['cat' => 'Fruit' , 'num' => $f->id, 'prod' => str_replace(" ", "-", $f->name) ]) }}">{{ $f->name }}</a></p>
+                                            <p class="clearfix price-product"><span class="price-old">$650</span> {{ $f->prix }} F CFA</p>
                                         </div>
                                     </div>
                                     @endforeach
