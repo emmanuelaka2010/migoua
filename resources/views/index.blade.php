@@ -54,9 +54,9 @@
                                 </div>
                                 <div class="clearfix menu-title-box bold uppercase">
                                     <ul>
-                                        <li><a onclick="showBoxCateHomeByID('#fruit','.good-deal-product')" href="javascript:;">Fruit</a></li>
-                                        <li><a onclick="showBoxCateHomeByID('#legume','.good-deal-product')" href="javascript:;">Légume</a></li>
-                                        <li><a onclick="showBoxCateHomeByID('#viande','.good-deal-product')" href="javascript:;">Viande</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#fruit_m','.good-deal-product')" href="javascript:;">Fruit</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#legume_m','.good-deal-product')" href="javascript:;">Légume</a></li>
+                                        <li><a onclick="showBoxCateHomeByID('#viande_m','.good-deal-product')" href="javascript:;">Viande</a></li>
                                         <li><a onclick="showBoxCateHomeByID('#fashion','.good-deal-product')" href="javascript:;">Lorem</a></li>
                                         <li><a onclick="showBoxCateHomeByID('#auto-moto','.good-deal-product')" href="javascript:;">ipsum</a></li>
                                     </ul>
@@ -66,7 +66,7 @@
                         <div class="clearfix content-product-box bottom-margin-default full-width">
                             <div class="row">
                                 <div class="relative">
-                                    <div class="good-deal-product animate-default active-box-category hidden-content-box" id="fruit">
+                                    <div class="good-deal-product animate-default active-box-category hidden-content-box" id="fruit_m">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
                                             @foreach ($fruit_min as $fm)
@@ -181,7 +181,7 @@
                                             <!-- End Product Son -->
                                         </div>
                                     </div>
-                                    <div class="good-deal-product animate-default hidden-content-box" id="legume">
+                                    <div class="good-deal-product animate-default hidden-content-box" id="legume_m">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
                                             @foreach ($legume_min as $lm)
@@ -294,7 +294,7 @@
                                             <!-- End Product Son -->
                                         </div>
                                     </div>
-                                    <div class="good-deal-product animate-default hidden-content-box" id="viande">
+                                    <div class="good-deal-product animate-default hidden-content-box" id="viande_m">
                                         <!-- Product Son -->
                                         <div class="owl-carousel owl-theme">
                                             @foreach ($viande_min as $vm)
@@ -605,7 +605,7 @@
                             </div>
                             <div class="clearfix menu-title-box bold uppercase">
                                 <ul>
-                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#confectionery','.box-food-content')">Fruit</a></li>
+                                    <li><a href="javascript:;" onclick="showBoxCateHomeByID('#fruit','.box-food-content')">Fruit</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#milk-cream','.box-food-content')">Milk & Cream</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#dry-food','.box-food-content')">Dry Food</a></li>
                                     <li><a href="javascript:;" onclick="showBoxCateHomeByID('#vegetables','.box-food-content')">Vegetables</a></li>
@@ -690,7 +690,7 @@
                                             <a href="#"></a>
                                         </div>
                                         <div class="clearfix absolute name-product-no-ranking">
-                                            <p class="title-product clearfix full-width title-hover-black"><a href="#">Wayfarer Messenger Bag</a></p>
+                                            <p class="title-product clearfix full-width title-hover-black"><a href="#">milkr Messenger Bag</a></p>
                                             <p class="clearfix price-product"><span class="price-old">$450</span> $550</p>
                                         </div>
                                     </div>
