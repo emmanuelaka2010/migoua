@@ -6,6 +6,7 @@ use Cart;
 use App\Product;
 use App\Categories;
 use Illuminate\Http\Request;
+use Session;
 // use response;
 
 class CartController extends Controller
@@ -19,7 +20,9 @@ class CartController extends Controller
         $cart = Cart::add($product->id, $product->name, $qty, $product->prix)
                     ->associate($product);
         // dd($cart);
-        return redirect()->route('cart');
+        Session::flash('message', 'Le produit a été ajouté à votre panier avec success');
+        return back();
+        // return redirect()->route('cart');
         // return response()->json($cart);
         
     }

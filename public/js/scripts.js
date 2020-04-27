@@ -100,7 +100,7 @@ function changeIconButtonSearch() {
     if ($(window).width() <= 480) {
         $('.search-box button').html('<i class="data-icon data-icon-basic icon-basic-magnifier"></i>');
     } else {
-        $('.search-box button').html('Search');
+        $('.search-box button').html('Rechercher');
     }
 }
 

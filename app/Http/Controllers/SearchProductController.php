@@ -17,7 +17,7 @@ class SearchProductController extends Controller
         // dd('$search');
         $category_name = $_GET['cate_search'];
 
-        if (isset($category_name) and isset($search)) {
+        if (isset($category_name) and !empty($search) ) {
             if ($category_name == 'all') {
                 // $products = Product::where('name','like', "%$search%")->get();
                 $products = DB::table('categories')
@@ -41,6 +41,9 @@ class SearchProductController extends Controller
             }
             
             // dd($category_id);
+        }
+        else{
+            return back();
         }
         return view('search', compact('products', 'categories'));
     }

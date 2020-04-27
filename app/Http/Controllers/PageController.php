@@ -7,9 +7,11 @@ use App\Product;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\support\Facades\DB;
+use Session;
 
 class PageController extends Controller
 {
+    
     public function index() {
 
         // Toutes les catégories

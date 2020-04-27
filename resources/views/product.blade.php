@@ -422,6 +422,17 @@
 								<p onclick="showSideBar()"><span class="ti-filter"></span> Sidebar</p>
 							</div>
 							<!-- Product Content Detail -->
+							@if (session()->get('message'))
+								<div style="position: relative" class="alert alert-success justify-content-center" role="alert">
+									<p><strong>Success: </strong>{{ session()->get('message') }}</p>
+								<p><a class="btn btn-primary" href="{{ route('checkout') }}">Passez la commande</a></p>
+									
+										{{-- <button style="position: absolute; right: 0px" type="submit">finaliser votre commande</button> --}}
+									
+									
+								</div>
+								
+							@endif
 							<div class="top-product-detail relative ">
 								<div class="row">
 									<!-- Slide Product Detail -->

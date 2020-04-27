@@ -79,7 +79,7 @@
                                                     <ul class="option-product animate-default">
                                                     <li class="relative"><a href="{{ route('product', ['cat' => 'fruit' , 'num' => $fm->id, 'prod' => str_replace(" ", "-", $fm->name) ]) }}"><i class="data-icon data-icon-ecommerce icon-ecommerce-bag"></i></a></li>
                                                         <li class="relative"><a href="#"><i class="data-icondata-icon-basic icon-basic-heart" aria-hidden="true"></i></a></li>
-                                                        <li class="relative"><a href="javascript:;" class="show-modal" data-id="{{ $fm->id }}" data-name="{{ $fm->name }}" data-description="{{ $fm->description }}" data-photo="{{ $fm->photo }}" data-prix="{{ $fm->prix }}" data-toggle="modal" data-target="#quickview"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
+                                                    <li class="relative"><a href="javascript:;" class="show-modal" data-id="{{ $fm->id }}" data-name="{{ $fm->name }}" data-description="{{ $fm->description }}" data-photo="{{ $fm->photo }}" data-prix="{{ $fm->prix }}" data-toggle="modal" data-target="#quickview{{ $fm->id }}"><i class="data-icon data-icon-basic icon-basic-magnifier" aria-hidden="true"></i></a></li>
                                                         {{-- <li class="relative"><a href="javascript:;" ><i class="data-icon data-icon-basic icon-basic-magnifier" data-toggle="modal" data-target="#quickview" aria-hidden="true"></i></a></li> --}}
                                                     </ul>
                                                 </div>
