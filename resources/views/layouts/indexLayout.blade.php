@@ -133,11 +133,33 @@
                             </p>
                             <div class="clear-padding menu-header-top text-right col-md-8 col-xs-12 col-sm-6">
                                 <ul class="clear-margin">
-                                    <li class="relative"><a href="{{ route('login') }}">{{ __('Connexion') }}</a></li>
-                                    <li class="relative"><a href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
-                                    <li class="relative"><a href="#">My Account</a></li>
-                                    <li class="relative"><a href="#">Mes préférés</a></li>
+                                    @if (Auth::check())
+                                        <li class="relative"><a href="#">Mon compte</a></li>
+                                        <li class="relative">
+                                        <a href="{{ route('wishlist') }}">Mes préférés 
+                                            <span style="color: red; font-weight: bold;">({{ App\WishList::count() }})</span>
+                                            </a>
+                                        </li>
+                                        <li class="relative">
+                                            <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                        document.getElementById('logout-form').submit()
+                                            ">{{ __('Déconnexion') }}</a>
+                                        
+                                            <form id="logout-form" action="{{ route('logout') }}" method="post" style="display: none;">
+                                                @csrf
+                                            </form>
+                                        </li>
+                                    @else
                                     <li class="relative">
+                                        <a href="{{ route('login') }}">{{ __('Connexion') }}</a>
+                                    </li>
+                                    <li class="relative"><a href="{{ route('register') }}">{{ __('Inscription') }}</a></li>
+                                    @endif
+                                    
+                                    
+                                    
+                                    {{-- <li class="relative">
                                         <a href="#">EN</a>
                                         <ul>
                                             <li class="relative"><a href="#">JP</a></li>
@@ -152,7 +174,7 @@
                                             <li class="relative"><a href="#">USD</a></li>
                                             <li class="relative"><a href="#">CAD</a></li>
                                         </ul>
-                                    </li>
+                                    </li> --}}
                                 </ul>
                             </div>
                         </div>

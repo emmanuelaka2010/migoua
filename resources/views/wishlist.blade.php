@@ -440,33 +440,41 @@
 				<div class="row relative">
 					<div class="full-width relative table-wish-list">
 						<table class="full-width">
-							<thead>
-								<tr>
-									<th colspan="2">Product name</th>
-									<th>price</th>
-									<th>stock status</th>
-									<th>add to cart</th>
-								</tr>
-							</thead>
-							<tbody>
-								<tr>
-									<td>
-										<img src="img/image_big_product-min.png" alt=""/>
-									</td>
-									<td>
-										<p>MH02-Black09</p>
-									</td>
-									<td>
-										<p class="text-red">$350.00</p>
-									</td>
-									<td>
-										<p class="text-green"><i class="fa fa-check-circle" aria-hidden="true"></i> In Stock</p>
-									</td>
-									<td>
-										<a href="#" class="animate-default">shop now</a>
-									</td>
-								</tr>
-								<tr>
+							
+                                @if ($products->isEmpty())
+                                    <h4 style="text-align: center">Vous n'avez aucun produit dans votre liste</h4>  
+                                @else
+                                    @foreach ($products as $product)
+                                    <thead>
+                                        <tr>
+                                            <th colspan="2">Product name</th>
+                                            <th>price</th>
+                                            <th>stock status</th>
+                                            <th>add to cart</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr>
+                                        <td>
+                                        <img src="img/img_270x270/{{ $product->photo }}" alt="{{ $product->name }}"/>
+                                        </td>
+                                        <td>
+                                            <p>{{ $product->name }}</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-red">{{ $product->prix }} F CFA</p>
+                                        </td>
+                                        <td>
+                                            <p class="text-green"><i class="fa fa-check-circle" aria-hidden="true"></i> In Stock</p>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="animate-default">Acheter maintenant</a>
+                                        </td>
+                                    </tr>
+                                    @endforeach
+                                @endif
+								
+								{{-- <tr>
 									<td>
 										<img src="img/product_home_14-min.png" alt=""/>
 									</td>
@@ -533,7 +541,7 @@
 									<td>
 										<a href="#" class="animate-default">shop now</a>
 									</td>
-								</tr>
+								</tr> --}}
 							</tbody>
 						</table>
 					</div>

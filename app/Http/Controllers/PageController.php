@@ -85,19 +85,9 @@ class PageController extends Controller
         // Réquête pour selectionner le produit dans la BD à partir de son id.
         $product = Product::where('id', $id)->get();
         $product = $product[0];
-        // dd($product->status);
-        // Réquête pour récuperer la catégorie du produit selectionné
-        // $category_prod = DB::table('categories')
-        //                     ->select('categories.name')
-        //                     ->join('sub_categories', 'categories.id', '=', 'sub_categories.id_category')
-        //                     ->join('products', 'sub_categories.id', '=', 'products.id_sub_category')
-        //                     ->where('products.id', $id)
-        //                     ->get();
+
         $category_prod = $_GET['cat'];
         return view('product', compact('product', 'categories', 'category_prod', 'title'));
     }
 
-    public function wishlist(){
-        return view('wishlist');
-    }
 }

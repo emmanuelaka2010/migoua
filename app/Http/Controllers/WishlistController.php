@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use Session;
+use App\Wishlist;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WishlistController extends Controller
 {
@@ -12,19 +14,28 @@ class WishlistController extends Controller
         //     $this->middleware(['auth', 'verified']);
         // }
 
-    public function index(Request $request){
-        $value = $request->session()->all();
-        // $value = $request->session()->get('_previous.url');
-        // $request->session()->put('wishlit', ['default' => ['Illuminate\Support\Collection' => 'item']]);
-        // $request->session()->pull('essai');
-        dd($value);
-        return view('wishlist');
+    public function index()
+    {
+        $products = DB::table('wishlists')
+                        ->leftJoin('products', 'wishlists.product_id', '=', 'products.id')
+                        ->get();
+        return view('wishlist', compact('products'));
     }
 
-    // public function show(Request $request, $id){
-    //     $value = $request->session()->get('key', 'default');
-    //     dd($value);
-    //     return view('wishlist');
-    // }
+    public function addWishlist(Request $request)
+    {
+        $title = 'Produit';
+        $categories = Categories::all();
+        $wishlist = new Wishlist();
+        $wishlist->user_id = Auth::user()->id;
+        $wishlist->product_id = $request->product_id;
+        $wishlist->save();
+        
+        
+        $wishlistProd = DB::table('products')->where('id', $request->product_id);
+        return view('product', compact('wishlistProd', 'title', 'categories'));
+        // return view('product', );
+    }
+
 }
 

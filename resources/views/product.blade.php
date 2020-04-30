@@ -425,7 +425,8 @@
 							@if (session()->get('message'))
 								<div style="position: relative" class="alert alert-success justify-content-center" role="alert">
 									<p><strong>Success: </strong>{{ session()->get('message') }}</p>
-								<p><a class="btn btn-primary" href="{{ route('checkout') }}">Passez la commande</a></p>
+								<p><a class="btn btn-primary"
+								 href="{{ route('checkout') }}">Passez la commande</a></p>
 									
 										{{-- <button style="position: absolute; right: 0px" type="submit">finaliser votre commande</button> --}}
 									
@@ -573,7 +574,19 @@
 												<li class="button-hover-red"><button type="submit" id="addToCart" disabled class="animate-default">Ajouter au panier</button></li>
 												@endif
 												{{--  <li class="button-hover-red"><button class="animate-default">Ajouter au panier</button></li>  --}}
-												<li><a href="#" class="animate-default"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+												@php
+													$wishlistData = DB::table('wishlists')
+																		->rightJoin('products', 'wishlists.product_id', '=', 'products.id')
+																		->where('wishlists.product_id', '=', $product->id)
+																		->get();
+													$count = App\WishList::where('product_id', $product->id)->count();
+												@endphp
+												@if ($count == "0")
+												<li><a style="color: red" href="#" class="animate-default"><i class="fa fa-heart-o" aria-hidden="true"></i></a></li>
+												@else
+												<li><a style="color: red" href="#" class="animate-default"><i class="fa fa-heart" aria-hidden="true"></i></a></li>
+												@endif
+												
 												<li><a href="#" class="animate-default"><i class="fa fa-signal" aria-hidden="true"></i></a></li>
 												<li><a href="#" class="animate-default"><i class="fa fa-search" aria-hidden="true"></i></a></li>
 											</ul>

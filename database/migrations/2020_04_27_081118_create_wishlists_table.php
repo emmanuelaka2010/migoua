@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddTimestampsToSeller extends Migration
+class CreateWishlistsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,10 @@ class AddTimestampsToSeller extends Migration
      */
     public function up()
     {
-        Schema::table('sellers', function (Blueprint $table) {
+        Schema::create('wishlists', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->integer('user_id');
+            $table->integer('product_id');
             $table->timestamps();
         });
     }
@@ -25,8 +28,6 @@ class AddTimestampsToSeller extends Migration
      */
     public function down()
     {
-        Schema::table('sellers', function (Blueprint $table) {
-            $table->dropColumn(['created_at','updated_at']);
-        });
+        Schema::dropIfExists('wishlists');
     }
 }
